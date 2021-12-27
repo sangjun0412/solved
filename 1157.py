@@ -18,6 +18,7 @@ def solve():
         if hist[c]== compare:
             cnt +=1
             result=c
+            
     if cnt != 1:
         print("?")
     else:
