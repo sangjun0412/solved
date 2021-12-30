@@ -1,5 +1,4 @@
 def solve(a,b):
-    print(a,b)
     c=""
     d=""
     for i in a:
