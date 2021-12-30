@@ -1,8 +1,9 @@
-cnt = 0
-compare = [0]*10
-for _ in range(10):
-    i = int(input())
-    s=i%42
-    compare[s] += 1
+y =[]
+z =[]
 
-print(compare)
+for i in range(10):
+    x=int(input())
+    y.append(x%42)
+    if y[i] not in z:
+        z.append(y[i])
+print(len(z))
