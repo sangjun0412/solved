@@ -1,25 +1,23 @@
-from collections import Counter
 import sys
-input = sys.stdin.readline
-N = int(input())
-arr = []
-for _ in range(N):
-    arr.append(int(input()))
+from collections import Counter
+N = int(sys.stdin.readline())
+numbers = sorted([int(sys.stdin.readline()) for _ in range(N)])
 
-print("%.f" % (sum(arr)/N))
+# 산술평균
+print(round(sum(numbers) / N))
 
-arr.sort()
-print(arr[N//2])
+# 중앙값
+print(numbers[N // 2])
 
-k = Counter(arr).most_common()
-
-
-if len(arr) > 1:
-    if k[0][1] == k[1][1]:
-        print(k[1][0])
-    else:
-        print(k[0][0])
+# 최빈값
+count_list = sorted(Counter(numbers).items(), key=lambda x: (-x[1], x[0]))
+if N == 1:
+    print(numbers[0])
 else:
-    print(arr[0])
+    if count_list[0][1] != count_list[1][1]:
+        print(count_list[0][0])
+    else:
+        print(count_list[1][0])
 
-print(arr[-1] - arr[0])
+# 범위 : 최댓값 - 최솟값
+print(max(numbers) - min(numbers))
