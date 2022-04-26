@@ -1,32 +1,57 @@
-from collections import deque
 import sys
+from collections import deque
+
+queue = deque()
+
+
+def push(a):
+    queue.append(a)
+
+
+def pop():
+    if(not queue):
+        return -1
+    else:
+        return queue.popleft()
+
+
+def size():
+    return len(queue)
+
+
+def empty():
+    if queue:
+        return 0
+    else:
+        return 1
+
+
+def front():
+    return queue[0] if queue else -1
+
+
+def back():
+    return queue[-1] if queue else -1
+
+
+stack = []
 n = int(input())
-que = deque()
 
 for i in range(n):
-    data_input = sys.stdin.readline().split()
 
-    if(data_input[0] == 'push'):
-        que.append(int(data_input[1]))
-    elif(data_input[0] == 'pop'):
-        if que:
-            print(que.popleft())
-        else:
-            print(-1)
-    elif(data_input[0] == 'empty'):
-        if que:
-            print(0)
-        else:
-            print(1)
-    elif(data_input[0] == 'size'):
-        print(len(que))
-    elif(data_input[0] == 'front'):
-        if que:
-            print(data_input[0])
-        else:
-            print(-1)
-    elif(data_input[0] == 'back'):
-        if que:
-            print(data_input[-1])
-        else:
-            print(-1)
+    command = sys.stdin.readline().rstrip().split()
+
+    a1 = command[0]
+
+    if a1 == "push":
+        push(command[1])
+    elif a1 == "pop":
+        print(pop())
+    elif a1 == "size":
+        print(size())
+    elif a1 == "empty":
+        print(empty())
+    elif a1 == "front":
+        print(front())
+    elif a1 == "back":
+        print(back())
