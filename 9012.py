@@ -1,5 +1,3 @@
-
-
 T = int(input())
 for _ in range(T):
     input_data = input()
