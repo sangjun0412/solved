@@ -1,34 +1,31 @@
-import sys
-input = sys.stdin.readline
+from collections import Counter
 
-n, m, b = map(int, input().split())
-graph = []
+
+def make_land(height):
+    sec = 0
+    for key in land:
+        if key < height:
+            sec += (height - key) * land[key]
+        elif key > height:
+            sec += (key - height) * 2 * land[key]
+    return sec
+
+
+n, m, inven = map(int, input().split())
+land = []
 for _ in range(n):
-    graph.append(list(map(int, input().split())))
+    land += map(int, input().split())
 
+_sum, _len = sum(land), n * m
+land = dict(Counter(land))
+height, min_sec = 0, 100000000000000
 
-# 중간값을 구성
-Min = min(map(min, graph))
-Max = max(map(max, graph))
-leastTime = 1e9
+for i in range(257):
 
-for i in range(Min, Max+1):
-    pluscnt = 0
-    minuscnt = 0
-    for j in range(n):
-        for k in range(m):
-            h = graph[j][k] - i
-            if h > 0:
-                # minuscnt = 1번 작업 수
-                minuscnt += h
-            elif h < 0:
-                # h가 음수니까 -를 취해줌으로써 더하기로 바꿔준다.
-                # pluscnt = 2번 작업 수
-                pluscnt -= h
-    if minuscnt+b >= pluscnt:
-        time = minuscnt*2 + pluscnt
-        # 계속 비교해주면서 최솟값을 찾는다.
-        if leastTime >= time:
-            leastTime = time
-            resultHeight = i
-print(leastTime, resultHeight)
+    if _len * i <= _sum + inven:
+        sec = make_land(i)
+        if sec <= min_sec:
+            min_sec = sec
+            height = i
+
+print(min_sec, height)
