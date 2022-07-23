@@ -1,5 +1,4 @@
 import sys
-from tabnanny import check
 
 input = sys.stdin.readline
 
@@ -13,7 +12,6 @@ check_num = str(num)
 cnt = 0
 
 for i in range(len(check_num) - 1, 0, -1):
-    print(check_num[i])
     if check_num[i] == '0':
         cnt += 1
     else:
