@@ -13,6 +13,6 @@ for _ in range(n):
         heapq.heappush(heap, (abs(num), num))
     else:
         try:
-            print(heapq.heappop(heap))
+            print(heapq.heappop(heap)[1])
         except:
             print(0)
