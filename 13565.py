@@ -9,8 +9,6 @@ graph = [] * m
 for i in range(n):
     graph.append(list(map(int, input().rstrip())))
 
-visited = [[0] * (m) for _ in range(n)]
-
 
 def dfs(x, y):
     dx = [1, -1, 0, 0]
