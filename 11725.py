@@ -1,5 +1,5 @@
 import sys
-sys.setrecursionlimit(10000)
+sys.setrecursionlimit(10000000)
 input = sys.stdin.readline
 
 n = int(input())

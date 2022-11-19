@@ -8,6 +8,8 @@ for i in range(t):
 cnt1 = 0
 cnt0 = 0
 def fibonacci(n):
+    global cnt1
+    global cnt0
 	if n == 1:
 		cnt1 += 1
 	elif n == 0:
