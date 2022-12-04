@@ -1,34 +1,35 @@
-from collections import deque
+stack = []  # 스택
+res = 1  # result에 더해주기 전 임시 변수
+result = 0  # 결과 변수
+p = list(input())  # 입력값
 
-sentence = str(input())
-res = 1
-stack = []
-result = 0
-
-for n, w in enumerate(sentence):
-    if w == '(':
+# 1~4번째 과정 시작
+for i in range(len(p)):
+    if p[i] == '(':
         res *= 2
-        stack.append(w)
-    elif w == '[':
+        stack.append(p[i])
+
+    elif p[i] == '[':
         res *= 3
-        stack.append(w)
-    elif w == ')':
+        stack.append(p[i])
+
+    elif p[i] == ')':
         if not stack or stack[-1] != '(':
-            print(0)
+            result = 0
             break
-        if sentence[n - 1] == '(':
-            result += res
-        res = res // 2
-        stack.pop()
-    elif w == ']':
-        if not stack or stack[-1] != '[':
-            print(0)
-            break
-        if sentence[n - 1] == '[':
-            result += res
-        res = res // 3
+        if p[i - 1] == '(': result += res
+        res //= 2
         stack.pop()
 
+    elif p[i] == ']':
+        if not stack or stack[-1] != '[':
+            result = 0
+            break
+        if p[i - 1] == '[': result += res
+        res //= 3
+        stack.pop()
+
+# 결과 출력
 if stack:
     print(0)
 else:
